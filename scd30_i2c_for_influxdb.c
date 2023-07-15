@@ -62,13 +62,13 @@ int main(void) {
     uint8_t minor = 0;
     error = scd30_read_firmware_version(&major, &minor);
     if (error != NO_ERROR) {
-        printf("error executing read_firmware_version(): %i\n", error);
+        // printf("error executing read_firmware_version(): %i\n", error);
         return error;
     }
-    printf("firmware version major: %u minor: %u\n", major, minor);
+    // printf("firmware version major: %u minor: %u\n", major, minor);
     error = scd30_start_periodic_measurement(0);
     if (error != NO_ERROR) {
-        printf("error executing start_periodic_measurement(): %i\n", error);
+        // printf("error executing start_periodic_measurement(): %i\n", error);
         return error;
     }
 
@@ -81,8 +81,7 @@ int main(void) {
         error = scd30_blocking_read_measurement_data(&co2_concentration,
                                                      &temperature, &humidity);
         if (error != NO_ERROR) {
-            printf("error executing blocking_read_measurement_data(): %i\n",
-                   error);
+            // printf("error executing blocking_read_measurement_data(): %i\n", error);
             continue;
         }
         //printf("co2_concentration: %.2f ", co2_concentration);
@@ -115,7 +114,7 @@ int main(void) {
     // Replace localhost:8086, org, and bucket with your InfluxDB Server URL, Organization and Bucket.
     curl_easy_setopt(curl, CURLOPT_URL, "http://localhost:8086/api/v2/write?org=UCO&bucket=DatosSensores&precision=s");
     // Replace the API key
-    char *token_header = "Authorization: Token uvasdeprimaveraLMAOnomelopillas=";
+    char *token_header = "Authorization: Token lIr1nhHEzcKHEt7K-f8vhLgE8HZvFPR46Yy9-MiOebN_0OClDNcZNTL6NyEna3uOd5_CCZpAXcJYn5pXSk8qig==";
     headers = curl_slist_append(headers, token_header);
     curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
     headers = curl_slist_append(headers, "Accept: application/json");
