@@ -76,7 +76,7 @@ int main(void) {
     float temperature = 0.0;
     float humidity = 0.0;
     uint16_t repetition = 0;
-    for (repetition = 0; repetition < 1; repetition++) {
+    for (repetition = 0; repetition < 10; repetition++) {
         sensirion_hal_sleep_us(1500000);
         error = scd30_blocking_read_measurement_data(&co2_concentration,
                                                      &temperature, &humidity);
@@ -84,9 +84,9 @@ int main(void) {
             // printf("error executing blocking_read_measurement_data(): %i\n", error);
             continue;
         }
-        //printf("co2_concentration: %.2f ", co2_concentration);
-        //printf("temperature: %.2f ", temperature);
-        //printf("humidity: %.2f\n", humidity);
+        // printf("co2_concentration: %.2f ", co2_concentration);
+        // printf("temperature: %.2f ", temperature);
+        // printf("humidity: %.2f\n", humidity);
     }
   CURL *curl;
   CURLcode res;
